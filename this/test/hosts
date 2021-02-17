@@ -2,8 +2,8 @@
 node1.local
 
 [node:vars]
-ansible_become_password=admin
-ansible_user=vagrant
+ansible_become_password=u
+ansible_user=me
 
 
 [local]
