@@ -1,0 +1,6 @@
+---
+- name: Install from ubuntu packages
+  apt:
+    pkg:
+    - docker
+    - docker-compose

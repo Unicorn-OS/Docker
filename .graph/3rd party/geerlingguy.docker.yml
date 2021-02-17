@@ -1,0 +1,11 @@
+- hosts: local
+  become: yes
+
+  vars:
+    pip_install_packages:
+      - name: docker
+    docker_edition: 'ce'
+
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker 

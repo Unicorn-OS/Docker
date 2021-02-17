@@ -1,0 +1,14 @@
+---
+
+- hosts: node
+  roles:
+  # Make all this Automatic! It should detect the OS and only chose os_pkg when appropriate! or if it's the only option available. Can be overridden with tags.
+  - role: docker/os_pkg
+    tags: pkg, never
+
+  - role: docker/latest
+    become: yes
+    tags: latest
+
+  - role: stor-docker
+    tags: stor, never

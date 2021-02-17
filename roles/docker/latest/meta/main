@@ -1,0 +1,5 @@
+---
+dependencies:
+- role: docker/latest/docker-ce
+- role: docker/latest/compose
+- role: docker/common/postinstall

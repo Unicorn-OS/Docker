@@ -1,0 +1,29 @@
+---
+
+- name: Partition
+  parted:
+    device: '/dev/disk/by-id/{{docker_stor.by_id}}'
+    number: 1
+    name: '{{docker_stor.label}}'
+    state: present
+    label: gpt
+    # fs_type: btrfs
+  become: true
+
+- name: Mkfs
+  filesystem:
+    fstype: btrfs
+    dev: '/dev/disk/by-partlabel/{{docker_stor.label}}'
+    opts: '-L {{docker_stor.label}}'
+  become: true
+
+- name: Fstab & mount
+  mount:
+    path: '{{docker_stor.mount}}'
+    src: '/dev/disk/by-label/{{docker_stor.label}}'
+    fstype: btrfs
+    opts: noatime
+    state: mounted
+  become: true
+
+- import_tasks: docker-config

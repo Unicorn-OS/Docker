@@ -1,0 +1,14 @@
+---
+- name: Create a directory
+  file:
+    path: '{{docker_path}}'
+    state: directory
+    owner: '{{ansible_user}}'
+    group: '{{ansible_user}}'
+  become: true
+
+- name: Docker config
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+  become: true

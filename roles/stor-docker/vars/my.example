@@ -1,0 +1,7 @@
+---
+# Example
+my_docker:
+  stor:
+    label: 'stor.btrfs'
+    by_id: 'ata-KingDian_S100+_32GB_2017021500004'
+    part: '-part1'

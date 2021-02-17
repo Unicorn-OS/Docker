@@ -1,0 +1,9 @@
+---
+docker_stor:
+  name: 'stor.btrfs'
+  label: '{{my_docker.stor.label}}'
+  by_id: '{{my_docker.stor.by_id}}'
+  part: '{{my_docker.stor.part}}'
+  mount: '/mnt/{{my_docker.stor.label}}'
+
+docker_path: '{{docker_stor.mount}}/.uni/cloud/docker'

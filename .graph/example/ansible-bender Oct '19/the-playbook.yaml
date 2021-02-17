@@ -1,0 +1,22 @@
+- name: Serve our file using httpd
+  hosts: all
+  vars:
+    ansible_bender:
+      base_image: fedora:30
+      target_image:
+        name: our-httpd
+        cmd: httpd -DFOREGROUND
+  tasks:
+  - name: Install httpd
+    package:
+      name: httpd
+      state: installed
+  - name: Listen on all network interfaces.
+    lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^Listen '
+      line: Listen 0.0.0.0:80
+  - name: Copy our file to httpd’s webroot
+    copy:
+      src: our-file.txt
+      dest: /var/www/html 
