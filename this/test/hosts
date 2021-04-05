@@ -1,5 +1,5 @@
 [node]
-node1.local
+192.168.1.140
 
 [node:vars]
 ansible_become_password=u
@@ -13,3 +13,7 @@ localhost
 ansible_connection=local
 ansible_become_password=u
 ansible_user=me
+
+[net:children]
+node
+local

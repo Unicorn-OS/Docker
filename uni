@@ -1,6 +1,6 @@
 ---
 
-- hosts: node
+- hosts: net
   roles:
   # Make all this Automatic! It should detect the OS and only chose os_pkg when appropriate! or if it's the only option available. Can be overridden with tags.
   - role: docker/os_pkg
