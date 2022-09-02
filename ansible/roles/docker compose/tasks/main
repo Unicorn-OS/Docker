@@ -1,6 +1,8 @@
 ---
 - name: Install
   apt:
-    name: docker-compose
+    name: docker-compose-plugin
     state: present
   become: yes
+
+# https://docs.docker.com/compose/install/ , https://docs.docker.com/compose/install/compose-plugin/#install-using-the-repository
