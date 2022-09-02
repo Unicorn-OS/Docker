@@ -10,5 +10,8 @@
     become: yes
     tags: latest
 
+  - role: docker compose
+    become: yes
+
   - role: stor-docker
     tags: stor, never
