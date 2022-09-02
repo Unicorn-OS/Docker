@@ -15,5 +15,4 @@ ansible_become_password=u
 ansible_user=me
 
 [net:children]
-node
 local
