@@ -1,14 +1,13 @@
+---
 - name: Create the docker group.
   group:
     name: docker
     state: present
-  become: yes
+  become: true
 
 - name: Add your user to the docker group.
   user:
-    name: me
+    name: "{{ ansible_env.USER }}"
     groups: docker
     append: yes
-  become: yes
-
-# https://docs.docker.com/engine/install/linux-postinstall/
+  become: true

@@ -1,0 +1,19 @@
+- hosts: localhost
+  vars:
+    ansible_become_password: u
+  roles:
+  # Make all this Automatic! It should detect the OS and only chose os_pkg when appropriate! or if it's the only option available. Can be overridden with tags.
+  - role: Docker/os_pkg
+    tags: pkg, never
+
+  - role: Docker/latest
+    become: yes
+    tags: latest
+
+  - role: non-root user permission
+
+  - role: docker compose
+    become: yes
+
+  - role: stor-docker
+    tags: stor, never
