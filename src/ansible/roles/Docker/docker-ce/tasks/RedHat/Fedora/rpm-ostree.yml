@@ -1,47 +1,18 @@
-# https://docs.docker.com/engine/install/fedora/
+# sch: https://www.google.com/search?q=rpm-ostree+install+docker
+# https://blog.2to.fun/en/posts/install-docker-in-silverblue/
 
-- debug:
-    msg: "install Docker on rpm-ostree"
-
-# https://docs.fedoraproject.org/en-US/iot/add-repos/
-- name: ostree add repo
-  ansible.builtin.get_url:
-    url: https://download.docker.com/linux/fedora/docker-ce.repo
-    dest: /etc/yum.repos.d/docker-ce.repo
-  become: true
-
-- name: Enable repo
-  ansible.builtin.replace:
-    path: /etc/yum.repos.d/docker-ce.repo
-    regexp: "enabled=0"
-    replace: "enabled=1"
-  become: true
-
-- name: Install Docker-ce
+- name: Install Docker
   community.general.rpm_ostree_pkg:
     name: "{{ item }}"
     state: present
   loop:
-  - docker-ce
+  - docker
   become: true
   notify: Reboot
 
-# - name: Install Docker Engine, containerd, and Docker Compose
-#   community.general.rpm_ostree_pkg:
-#     name: "{{ item }}"
-#     state: present
-#   loop:
-#   - docker-ce-cli
-#   - containerd.io
-#   - docker-buildx-plugin
-#   - docker-compose-plugin
-#   become: true
-#   when: docker_install_all
-#   notify: Reboot
-
-# - name: Enable & Start Docker
-#   ansible.builtin.systemd_service:
-#     name: docker
-#     state: started
-#     enabled: true
-#   become: true
+- name: Enable & Start Docker
+  ansible.builtin.systemd_service:
+    name: docker
+    state: started
+    enabled: true
+  become: true
