@@ -2,7 +2,4 @@
   vars:
     ansible_become_password: u
   roles:
-    - name: geerlingguy.docker
-      become: true
-    # to add non-root user permissions
-    - name: non-root user permission
+    - Docker

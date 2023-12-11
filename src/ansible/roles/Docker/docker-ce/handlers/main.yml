@@ -1,0 +1,7 @@
+- name: rpm-ostree cleanup
+  ansible.builtin.shell: rpm-ostree cleanup -m
+  become: true
+
+# Run last --------------
+- name: Reboot
+  include_tasks: tasks/fn/reboot.yml # https://stackoverflow.com/questions/71578834/using-block-in-handler-ansible

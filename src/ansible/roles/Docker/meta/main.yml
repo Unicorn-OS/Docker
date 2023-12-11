@@ -1,0 +1,4 @@
+---
+dependencies:
+- role: Docker/docker-ce
+- role: Docker/postinstall/non-root user permission

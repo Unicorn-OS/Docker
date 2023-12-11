@@ -1,0 +1,38 @@
+# https://docs.docker.com/engine/install/fedora/
+
+- debug:
+    msg: "install Docker on rpm-ostree"
+
+- name: ostree add repo
+  ansible.builtin.shell: ostree remote add docker-ce https://download.docker.com/linux/fedora/docker-ce.repo
+  args:
+    creates: /etc/ostree/remotes.d/docker-ce.conf
+  become: true
+  notify: rpm-ostree cleanup
+
+- name: Install Docker-ce
+  community.general.rpm_ostree_pkg:
+    name: "{{ item }}"
+    state: present
+  loop:
+  - docker-ce
+  become: true
+
+- name: Install Docker Engine, containerd, and Docker Compose
+  community.general.rpm_ostree_pkg:
+    name: "{{ item }}"
+    state: present
+  loop:
+  - docker-ce-cli
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin
+  become: true
+  when: docker_install_all
+
+- name: Enable & Start Docker
+  ansible.builtin.systemd_service:
+    name: docker
+    state: started
+    enabled: true
+  become: true

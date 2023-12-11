@@ -1,0 +1,34 @@
+---
+# Install packer from Official repo
+# https://developer.hashicorp.com/packer/downloads
+
+- name: prerequisite
+  become: true
+  ansible.builtin.dnf:
+    name: dnf-plugins-core
+    state: latest
+
+# Will NOT work with yum_repository! https://github.com/ansible/ansible/issues/46963
+- name: Add repository manually, alt
+  become: true
+  ansible.builtin.command: dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+  args:
+    creates: /etc/yum.repos.d/docker-ce.repo
+
+- name: Install Docker-ce
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - docker-ce
+    state: latest
+
+- name: Install Docker Engine, containerd, and Docker Compose
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: latest
+  when: docker_install_all
