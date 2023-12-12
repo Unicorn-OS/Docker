@@ -32,3 +32,10 @@
       - docker-compose-plugin
     state: latest
   when: docker_install_all
+
+- name: Enable & Start Docker
+  ansible.builtin.systemd_service:
+    name: docker
+    state: started
+    enabled: true
+  become: true
