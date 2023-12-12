@@ -1,4 +1,6 @@
 ---
 dependencies:
-- Docker/docker-ce
+# Moving to top, because `sudo usermod -aG docker $USER` fails otherwise!
 - Docker/postinstall
+# </>
+- Docker/docker-ce

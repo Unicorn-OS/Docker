@@ -1,4 +1,5 @@
 ---
+# from: https://docs.docker.com/engine/install/linux-postinstall/
 - name: Create the docker group.
   group:
     name: docker
@@ -11,4 +12,4 @@
     groups: docker
     append: yes
   become: true
-  notify: Reboot
+  # notify: Reboot
