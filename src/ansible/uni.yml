@@ -1,6 +1,5 @@
-- hosts: test #localhost
+- hosts: test #,localhost
   vars:
     ansible_become_password: u
   roles:
-    # - Docker
-    - test Functions
+    - Docker
