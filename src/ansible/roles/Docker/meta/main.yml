@@ -1,4 +1,4 @@
 ---
 dependencies:
 - Docker/docker-ce
-- Docker/postinstall/non-root user permission
+- Docker/postinstall

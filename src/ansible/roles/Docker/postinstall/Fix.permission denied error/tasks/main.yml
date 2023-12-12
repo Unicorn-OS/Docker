@@ -1,0 +1,9 @@
+# from: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
+# works! on silverblue
+
+- name: Fix permission
+  ansible.builtin.file:
+    path: /var/run/docker.sock
+    mode: '0666'
+  become: true
+  notify: Restart docker service
