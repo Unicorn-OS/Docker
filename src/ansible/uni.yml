@@ -1,5 +1,5 @@
-- hosts: test #,localhost
+- hosts: localhost
   vars:
-    ansible_become_password: u
+    galaxy: "GeerlingGuy"
   roles:
     - Docker

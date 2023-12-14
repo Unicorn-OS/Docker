@@ -2,6 +2,13 @@
 # Install packer from Official repo
 # https://developer.hashicorp.com/packer/downloads
 
+- name: Remove Old
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - moby-engine
+    state: absent
+
 - name: prerequisite
   become: true
   ansible.builtin.dnf:
