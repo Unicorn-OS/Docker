@@ -1,7 +1,5 @@
-- hosts: localhost
+- hosts: localhost #, node
+  vars:
+    reboot: false
   roles:
-    - name: geerlingguy.docker
-      become: true
-
-    # to add non-root user permissions https://docs.docker.com/engine/install/linux-postinstall/
-    - name: UniInc.Docker-User-Permission
+    - name: UniInc.Docker
