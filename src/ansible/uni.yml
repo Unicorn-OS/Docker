@@ -1,5 +1,7 @@
 - hosts: localhost
-  vars:
-    galaxy: "GeerlingGuy"
   roles:
-    - Docker
+    - name: geerlingguy.docker
+      become: true
+
+    # to add non-root user permissions https://docs.docker.com/engine/install/linux-postinstall/
+    - name: UniInc.Docker-User-Permission

@@ -1,2 +1,3 @@
-ansible-galaxy role install geerlingguy.docker
+cd roles
+ansible-galaxy install -r requirements.yml
 ansible-playbook galaxy.yml

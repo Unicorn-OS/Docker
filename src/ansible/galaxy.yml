@@ -1,9 +1,0 @@
-- hosts: localhost
-  vars:
-    ansible_become_password: u
-  roles:
-    - name: geerlingguy.docker
-      become: true
-
-    # to add non-root user permissions https://docs.docker.com/engine/install/linux-postinstall/
-    - name: Docker/postinstall

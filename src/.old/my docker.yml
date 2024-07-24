@@ -1,0 +1,6 @@
+- hosts: localhost
+#  vars:
+#    galaxy: "GeerlingGuy"
+  roles:
+    - Docker
+    - UniInc.Docker-User-Permission
